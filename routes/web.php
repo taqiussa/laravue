@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,7 @@ Route::get('/', function () {
 // Route::any('/{slug1}/{slug2}', function(){
 //     return view('latihan1');
 // });
+// Route::get('/users', [AuthController::class,'index']);
 Route::get('/{any}', function(){
     return view('latihan1');
 })->where('any','.*');

@@ -1,15 +1,12 @@
 <template>
     <div>
-        <section v-if="name">
-            <h1>Hello {{name}}</h1>
-            <router-link :to="{name: 'User'}">Kembali</router-link>
-        </section>
-        <section v-else>
+        <section>
             <h1>List User</h1>
+            <router-link to='/user/create'>Registrasi</router-link>
             <ul>
                 <li v-for="user in users">
                     <!-- <router-link :to="profile_uri(user.name)">{{user.name}}</router-link> -->
-                    <a href="" @click.prevent="lihatuser(user.name)">{{user.name}}</a>
+                    <a href="" @click.prevent="lihatuser(user.id)">{{user.name}}</a>
                 </li>
             </ul>    
         </section>
@@ -17,25 +14,33 @@
 </template>
 <script>
     export default {
-        props: ['name'],
         data() {
             return {
-                users: [
-                    {id:1, name:'Taqius'},
-                    {id:2, name:'Shofi'},
-                    {id:3, name:'Albastomi'},
-                ]
+                users: [],
             }
         },
+        mounted() {
+            this.getUsers()
+            // fetch('/api/users')
+            // .then(response => response.json())
+            // .then(data => {
+            //     this.users = data
+            //     console.log(this.users)
+            // })
+        },
         methods: {
-            profile_uri(name){
-                return '/user/'+ name.toLowerCase()
+            getUsers() {
+                axios.get('/api/users').then((response) => {
+                this.users = response.data
+                })
             },
-            lihatuser(name){
-                // this.$router.push('/user/'+name.toLowerCase())
+            profile_uri(id){
+                return '/user/'+ id
+            },
+            lihatuser(id){
                 this.$router.push({
-                    name: 'User',
-                    params: {name: name.toLowerCase()}
+                    name: 'Profile',
+                    params: {id: id}
                 })
             }
         }

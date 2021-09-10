@@ -6,6 +6,9 @@ const About = require('../pages/About.vue').default
 // const NotFound = require('./pages/NotFound.vue').default
 import NotFound from '../pages/NotFound.vue'
 import User from '../pages/User.vue'
+import Profile from '../pages/Profile.vue'
+import Register from '../pages/Register.vue'
+import Edit from '../pages/Edit.vue'
 const routes = [
     {
         name: 'Home',
@@ -19,9 +22,25 @@ const routes = [
     },
     {
         name: 'User',
-        path: '/user/:name?',
+        path: '/user',
         component: User,
+    },
+    {   
+        name: 'Register',
+        path: '/user/create',
+        component: Register,
+    },
+    {
+        name: 'Profile',
+        path: '/user/:id',
+        component: Profile,
         props: true
+    },
+    {
+        name: 'Edit',
+        path: '/user/:id/edit',
+        component: Edit,
+        props: true,
     },
     {
         path: '*',
