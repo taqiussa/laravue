@@ -1,9 +1,11 @@
 <template>
     <div>
         <section v-if="id">
+            <img v-if="detailuser.foto" :src="'/image/' + detailuser.foto" width="200">
             <h1>Hello {{detailuser.name}}</h1>
             <h2>Email : {{detailuser.email}}</h2>
             <router-link :to="{name: 'User'}">Kembali</router-link>
+            <router-link :to="{name: 'Upload'}">Upload</router-link>
             <a href="" @click.prevent="handlingDelete">Hapus</a>
             <router-link :to="{name: 'Edit'}">Edit</router-link>
         </section>

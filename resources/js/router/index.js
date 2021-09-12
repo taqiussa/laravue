@@ -9,6 +9,7 @@ import User from '../pages/User.vue'
 import Profile from '../pages/Profile.vue'
 import Register from '../pages/Register.vue'
 import Edit from '../pages/Edit.vue'
+import UploadFoto from '../pages/UploadFoto.vue'
 const routes = [
     {
         name: 'Home',
@@ -35,6 +36,12 @@ const routes = [
         path: '/user/:id',
         component: Profile,
         props: true
+    },
+    {
+        name: 'Upload',
+        path: '/user/:id/foto',
+        component: UploadFoto,
+        props: true,
     },
     {
         name: 'Edit',

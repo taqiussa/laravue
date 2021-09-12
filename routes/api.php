@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,4 @@ Route::post('/users', [AuthController::class,'store']);
 Route::get('/users/{id}',[AuthController::class,'show']);
 Route::delete('/users/{id}',[AuthController::class,'destroy']);
 Route::put('/users/{id}',[AuthController::class,'update']);
+Route::post('/users/foto/{id}',[UserController::class,'upload']);
